@@ -1,0 +1,80 @@
+<div class="main">
+  <div class="container-fluid">
+    <div class="stream-view">
+      <h2>RxJS Stream Visualizer</h2>
+      <div class="stream">
+        <div
+          class="stream-item"
+          *ngFor="let item of streamService.items"
+          [style.background-color]="item.color"
+          (@itemState.done)="log($event, item)"
+          [@itemState]
+        >
+        </div>
+      </div>
+    </div>
+    <div class="log">
+      <div id="logger">
+        <ul>
+          <li *ngFor="let log of loggerService.logs">{{ log }}</li>
+        </ul>
+      </div>
+      <div class="reset">
+        <button
+          class="btn btn-sm btn-warning"
+          (click)="clearLogs()"
+        >
+          Clear Logs
+        </button>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="form-group">
+        <select
+          name="type"
+          class="form-control"
+          (change)="onSelect($event)"
+        >
+          <option
+            *ngFor="let operator of operators"
+            [value]="operator"
+          >
+            {{ operator }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <div class="col-10">
+          <input
+            type="text"
+            name="message"
+            class="form-control"
+            [(ngModel)]="message"
+            (keyup)="onKeyup($event)"
+          >
+        </div>
+        <div class="col-2">
+          <button
+            class="btn btn-outline-primary"
+            (click)="onEnter($event)"
+          >
+            Send Data
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="code-block" [ngSwitch]="selectedOperator">
+    <app-of-operator *ngSwitchCase="'of'"></app-of-operator>
+    <app-map-operator *ngSwitchCase="'map'"></app-map-operator>
+    <app-filter-operator *ngSwitchCase="'filter'"></app-filter-operator>
+    <app-throttle-time-operator *ngSwitchCase="'throttleTime'"></app-throttle-time-operator>
+    <app-debounce-time-operator *ngSwitchCase="'debounceTime'"></app-debounce-time-operator>
+    <app-distinct-until-changed-operator *ngSwitchCase="'distinctUntilChanged'"></app-distinct-until-changed-operator>
+    <app-merge-operator *ngSwitchCase="'merge'"></app-merge-operator>
+    <app-switch-map-operator *ngSwitchCase="'switchMap'"></app-switch-map-operator>
+    <app-skip-operator *ngSwitchCase="'skip'"></app-skip-operator>
+    <app-take-operator *ngSwitchCase="'take'"></app-take-operator>
+    <app-finalize-operator *ngSwitchCase="'finalize'"></app-finalize-operator>
+  </div>
+</div>

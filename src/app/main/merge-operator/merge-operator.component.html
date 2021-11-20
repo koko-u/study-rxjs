@@ -1,0 +1,27 @@
+<pre>
+  <code class="typescript">
+    import {{'{'}} merge, interval {{'}'}} from 'rxjs';
+    import {{'{'}} map, take {{'}'}} from 'rxjs/operators';
+
+    // 複数のObservableを1本にまとめる
+    merge(
+      interval(1200).pipe(
+        take(4),
+        map((index) => `(a: ${{'{'}}index + 1{{'}'}} / 4)`)  // red
+      ),
+      interval(500).pipe(
+        take(10),
+        map((index) => `(b: ${{'{'}}index + 1{{'}'}} / 10)`) // green
+      )
+    ).pipe(
+      map(value => {{'{'}}
+  if (value.startsWith('(a')) {{'{'}}
+  return {{'{'}} message: `merge: ${{'{'}}value{{'}'}}`, color: 'rgb(226, 149, 126)' {{'}'}};
+  {{'}'}} else if (value.startsWith('(b')) {{'{'}}
+  return {{'{'}} message: `merge: ${{'{'}}value{{'}'}}`, color: 'rgb(126, 226, 134)' {{'}'}};
+  {{'}'}}
+  {{'}'}})
+    );
+  </code>
+</pre>
+

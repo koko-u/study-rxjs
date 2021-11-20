@@ -1,0 +1,16 @@
+<pre>
+  <code class="typescript">
+    import {{'{'}} Observable {{'}'}} from 'rxjs';
+    import {{'{'}} map, take {{'}'}} from 'rxjs/operators';
+
+    // 指定回数分のみストリームを流す
+    let count = 0;
+
+    Observable
+      .pipe(
+        take(3),
+        map(value => `take(${{'{'}}++count{{'}'}}): ${{'{'}}value{{'}'}}`)
+      );
+  </code>
+</pre>
+

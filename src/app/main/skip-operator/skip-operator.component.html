@@ -1,0 +1,14 @@
+<pre>
+  <code class="typescript">
+    import {{'{'}} Observable {{'}'}} from 'rxjs';
+    import {{'{'}} map, skip {{'}'}} from 'rxjs/operators';
+
+    // 指定回数分のストリームを流さず、スキップする
+    Observable
+      .pipe(
+        skip(3),
+        map(value => `skip: ${{'{'}}value{{'}'}}`)
+      );
+  </code>
+</pre>
+

@@ -1,0 +1,15 @@
+<pre>
+  <code class="typescript">
+    import {{'{'}} Observable {{'}'}} from 'rxjs';
+    import {{'{'}} map, debounceTime {{'}'}} from 'rxjs/operators';
+
+    // 連続する最後の処理から250ミリ秒遅延後、
+    // 最後のデータを1度だけストリームに流す
+    Observable
+      .pipe(
+        debounceTime(250),
+        map(value => `debounceTime(250): ${{'{'}}value{{'}'}}`)
+      );
+  </code>
+</pre>
+

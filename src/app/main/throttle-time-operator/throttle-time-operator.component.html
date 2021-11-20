@@ -1,0 +1,13 @@
+<pre>
+  <code class="typescript">
+    import {{'{'}} Observable {{'}'}} from 'rxjs';
+    import {{'{'}} map, throttleTime {{'}'}} from 'rxjs/operators';
+
+    // 連続する処理を250ミリ秒間隔で間引く
+    Observable
+      .pipe(
+        throttleTime(250),
+        map(value => `throttleTime(250): ${{'{'}}value{{'}'}}`)
+      );
+  </code>
+</pre>

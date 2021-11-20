@@ -1799,6 +1799,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.9.2":
+  version: 2.10.2
+  resolution: "@popperjs/core@npm:2.10.2"
+  checksum: 43c189e3eb6d032433512d94761b54fc7cae15957ca5528008813f887a67b5760b949f30a5141b476be2ba5a6c677c91def150f603d2d3e30b5e97a5ae51474e
+  languageName: node
+  linkType: hard
+
 "@schematics/angular@npm:13.0.3":
   version: 13.0.3
   resolution: "@schematics/angular@npm:13.0.3"
@@ -1814,6 +1821,16 @@ __metadata:
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
   checksum: e1fb1bbbc12089a0cb9433dc290f97bddd062deadb6178ce9bcb93bb7c1aecde5e60184bc7065aec42fe1663622a213493c48bbd4972d931aae48315f18e1be9
+  languageName: node
+  linkType: hard
+
+"@types/bootstrap@npm:^5.1.6":
+  version: 5.1.6
+  resolution: "@types/bootstrap@npm:5.1.6"
+  dependencies:
+    "@popperjs/core": ^2.9.2
+    "@types/jquery": "*"
+  checksum: 99f0cda126973e3efad8c3632f5f33358bc8a5650fda885a72722fac853750ffc0484313618a2b502fe0ad2118512810e59153898d3f403f5869e864a9b0deee
   languageName: node
   linkType: hard
 
@@ -1881,6 +1898,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jquery@npm:*":
+  version: 3.5.8
+  resolution: "@types/jquery@npm:3.5.8"
+  dependencies:
+    "@types/sizzle": "*"
+  checksum: 8e561efb52737f38276e1aabf25f26d89bf46c537410625e80fa828bbcd49a1d452c60f160d88eb17b2e85e98300662248a70f4ba678dbee27c2846672f66859
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:*, @types/json-schema@npm:^7.0.5, @types/json-schema@npm:^7.0.8, @types/json-schema@npm:^7.0.9":
   version: 7.0.9
   resolution: "@types/json-schema@npm:7.0.9"
@@ -1913,6 +1939,13 @@ __metadata:
   version: 0.12.1
   resolution: "@types/retry@npm:0.12.1"
   checksum: 5f46b2556053655f78262bb33040dc58417c900457cc63ff37d6c35349814471453ef511af0cec76a540c601296cd2b22f64bab1ab649c0dacc0223765ba876c
+  languageName: node
+  linkType: hard
+
+"@types/sizzle@npm:*":
+  version: 2.3.3
+  resolution: "@types/sizzle@npm:2.3.3"
+  checksum: 586a9fb1f6ff3e325e0f2cc1596a460615f0bc8a28f6e276ac9b509401039dd242fa8b34496d3a30c52f5b495873922d09a9e76c50c2ab2bcc70ba3fb9c4e160
   languageName: node
   linkType: hard
 
@@ -2572,6 +2605,15 @@ __metadata:
   version: 1.0.0
   resolution: "boolbase@npm:1.0.0"
   checksum: 3e25c80ef626c3a3487c73dbfc70ac322ec830666c9ad915d11b701142fab25ec1e63eff2c450c74347acfd2de854ccde865cd79ef4db1683f7c7b046ea43bb0
+  languageName: node
+  linkType: hard
+
+"bootstrap@npm:^5.1.3":
+  version: 5.1.3
+  resolution: "bootstrap@npm:5.1.3"
+  peerDependencies:
+    "@popperjs/core": ^2.10.2
+  checksum: 301b5ed872efba061104cf22ac93568e3837867fb5527ab9326a51510fb752bd4883e1d488225c8be72f86d9d3a55ef5b166aa7fa62c2fdd077c3f05b65752f8
   languageName: node
   linkType: hard
 
@@ -4375,6 +4417,13 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
+"highlight.js@npm:^11.3.1":
+  version: 11.3.1
+  resolution: "highlight.js@npm:11.3.1"
+  checksum: 9adaaa1fe5aaae0ca522f9355bc2a7387f76ab362f88c32c86879b99f606619a9aa33c32ffc94cd893987e71ba5d2de6f3e325ed9e8eac65e5872d251e8cba3a
+  languageName: node
+  linkType: hard
+
 "hosted-git-info@npm:^4.0.1":
   version: 4.0.2
   resolution: "hosted-git-info@npm:4.0.2"
@@ -5212,6 +5261,13 @@ fsevents@~2.3.2:
   bin:
     karma: bin/karma
   checksum: 2e652c8f4d520593bedf96d21a9ab92b02e93bdb2598c7abee79ccdbd793099c634555e247559801b1226bae3a5544be61a3570f8ed560e96064447fb19206c9
+  languageName: node
+  linkType: hard
+
+"keycode-js@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "keycode-js@npm:3.1.0"
+  checksum: 3043e43d39aef08ba92b5bde7a71c52547cc4801b4a6d0d7670725e36986dc0dc068705b879347643362158b81ce4c6cafe86a17b94b9b552118a914bbd44a3b
   languageName: node
   linkType: hard
 
@@ -7820,14 +7876,18 @@ fsevents@~2.3.2:
     "@angular/platform-browser": ~13.0.0
     "@angular/platform-browser-dynamic": ~13.0.0
     "@angular/router": ~13.0.0
+    "@types/bootstrap": ^5.1.6
     "@types/jasmine": ~3.10.0
     "@types/node": ^12.11.1
+    bootstrap: ^5.1.3
+    highlight.js: ^11.3.1
     jasmine-core: ~3.10.0
     karma: ~6.3.0
     karma-chrome-launcher: ~3.1.0
     karma-coverage: ~2.0.3
     karma-jasmine: ~4.0.0
     karma-jasmine-html-reporter: ~1.7.0
+    keycode-js: ^3.1.0
     rxjs: ~7.4.0
     tslib: ^2.3.0
     typescript: ~4.4.3

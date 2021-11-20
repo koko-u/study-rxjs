@@ -1,0 +1,20 @@
+<pre>
+  <code class="typescript">
+    import {{'{'}} interval, Observable {{'}'}} from 'rxjs';
+    import {{'{'}} map, switchMap, take {{'}'}} from 'rxjs/operators';
+
+    // ストリーム（A）に流れてくるデータを元に、別のストリーム（B）を流す。
+    // 別のストリーム（B）が終わる前に、元のストリーム（A）が流れた場合、
+    // （B）は途中でキャンセル・破棄され、始めから再び実行される
+    Observable
+      .pipe(
+        switchMap(value => {{'{'}}
+  return interval(1000).pipe(
+            take(5),
+            map((index) => `switchMap: ${{'{'}}index{{'}'}} => ${{'{'}}value{{'}'}}`)
+          );
+  {{'}'}});
+      );
+  </code>
+</pre>
+

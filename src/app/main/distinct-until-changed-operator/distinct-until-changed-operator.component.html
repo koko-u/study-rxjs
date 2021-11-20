@@ -1,0 +1,14 @@
+<pre>
+  <code class="typescript">
+    import {{'{'}} Observable {{'}'}} from 'rxjs';
+    import {{'{'}} distinctUntilChanged, map {{'}'}} from 'rxjs/operators';
+
+    // 前回と値が違う場合のみ、ストリームを流す
+    Observable
+      .pipe(
+        distinctUntilChanged(),
+        map(value => `distinctUntilChanged: ${{'{'}}value{{'}'}}`)
+      );
+  </code>
+</pre>
+
