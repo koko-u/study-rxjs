@@ -1,1 +1,14 @@
 @import "~bootstrap/scss/bootstrap";
+@import "~highlight.js/scss/vs2015";
+
+#code-block {
+  margin: 35px -100px 0;
+  background-color: #1E1E1E;
+
+  pre {
+    code {
+      font-size: 16px;
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+<div class="log">
+  <div id="logger">
+    <ul>
+      <li *ngFor="let log of loggerService.logs">{{ log }}</li>
+    </ul>
+  </div>
+  <div class="reset">
+    <button
+      class="btn btn-sm btn-warning"
+      (click)="clearLogs()"
+    >
+      Clear Logs
+    </button>
+  </div>
+</div>

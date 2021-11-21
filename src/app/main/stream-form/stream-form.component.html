@@ -1,0 +1,40 @@
+<div>
+  <div class="row mb-2">
+    <div class="col-12">
+      <select
+        name="type"
+        class="form-select"
+        (change)="onSelect($event)"
+      >
+        <option
+          *ngFor="let operator of operators"
+          [value]="operator"
+        >
+          {{ operator }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="input-group">
+        <input
+          type="text"
+          name="message"
+          class="form-control"
+          aria-describedby="button-addon2"
+          [(ngModel)]="message"
+          (keyup)="onKeyup($event)"
+        >
+        <button
+          class="btn btn-outline-primary"
+          id="button-addon2"
+          (click)="onEnter($event)"
+        >
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,12 +1,11 @@
 import { Component, ElementRef, OnInit } from "@angular/core"
-import { animate, state, style, transition, trigger } from "@angular/animations"
-import { Subscription } from "rxjs"
+import { AnimationEvent, animate, state, style, transition, trigger } from "@angular/animations"
 import { StreamService } from "../services/stream.service"
 import { LoggerService } from "../services/logger.service"
 import hljs from 'highlight.js'
 import { StreamData } from "../models/stream-data.model"
-import { Operator, operators } from "../models/operator.model"
-import * as KeyCode from 'keycode-js'
+import { Operator } from '../models/operator.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -27,12 +26,9 @@ import * as KeyCode from 'keycode-js'
 })
 export class MainComponent implements OnInit {
   el: HTMLElement
-  $logger: Element | null = null
   $codeBlock: Element | null = null
-  operators: Operator[]
-  message = 'test'
-  source?: Subscription
   selectedOperator?: Operator
+  logSubject$: Subject<void>
 
   constructor(
     el: ElementRef,
@@ -40,64 +36,19 @@ export class MainComponent implements OnInit {
     public loggerService: LoggerService,
   ) {
     this.el = el.nativeElement
-    this.operators = [...operators]
+    this.logSubject$ = new Subject<void>();
   }
 
   ngOnInit(): void {
-    this.$logger = this.el.querySelector('#logger')
     this.$codeBlock = this.el.querySelector('#code-block')
-
-    this.source = this.streamService.of()
-      .subscribe(message => {
-        this.streamService.add({ message })
-      })
-
-    this.selectedOperator = 'of'
-    this.highlightCodeBlock()
   }
 
-  log(event: any, data: StreamData) {
-    console.log({ event });
-  }
-
-  clearLogs() {
-    this.loggerService.reset()
-  }
-
-  onSelect(event: Event) {
-    this.source?.unsubscribe()
-
-    const operator = (event.target as HTMLSelectElement).value as Operator
-    if (!operator) return;
-
-    const obj = this.streamService.getOperator(operator)
-    if (obj.kind === 'string') {
-      obj.ope().subscribe(value => this.streamService.add({ message: value }))
-    } else {
-      obj.ope().subscribe(value => this.streamService.add(value))
+  log(event: AnimationEvent, data: StreamData) {
+    if (event.fromState === null) {
+      this.loggerService.add(data);
     }
 
-    this.selectedOperator = operator;
-    this.highlightCodeBlock()
-  }
-
-  onKeyup(event: KeyboardEvent) {
-    if (event.key === KeyCode.VALUE_ENTER) {
-      this.sendMessage(this.message)
-    }
-  }
-
-  onEnter(event: MouseEvent) {
-    event.preventDefault()
-    this.sendMessage(this.message)
-  }
-
-  private sendMessage(message: string) {
-    message = message.trim()
-    if (!message) {
-      message = 'blank'
-    }
-    this.streamService.do(message)
+    this.logSubject$.next()
   }
 
   private highlightCodeBlock() {
@@ -109,4 +60,8 @@ export class MainComponent implements OnInit {
     }, 50)
   }
 
+  onChangeOperator(operator: Operator) {
+    this.selectedOperator = operator;
+    this.highlightCodeBlock()
+  }
 }

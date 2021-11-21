@@ -69,17 +69,17 @@ export class StreamService {
   getOperator(name: Operator): ObservableOperation {
 
     switch (name) {
-      case 'of': return { kind: 'string', ope: this.of }
-      case 'map': return { kind: 'string', ope: this.map }
-      case 'filter': return { kind: 'string', ope: this.filter }
-      case 'throttleTime': return { kind: 'string', ope: this.throttleTime }
-      case 'debounceTime': return { kind: 'string', ope: this.debounceTime }
-      case 'distinctUntilChanged': return { kind: 'string', ope: this.distinctUntilChanged }
-      case 'merge': return { kind: 'data', ope: this.merge }
-      case 'switchMap': return { kind: 'string', ope: this.switchMap }
-      case 'skip': return { kind: 'string', ope: this.skip }
-      case 'take': return { kind: 'string', ope: this.take }
-      case 'finalize': return { kind: 'string', ope: this.finalize }
+      case 'of': return { kind: 'string', ope: this.of.bind(this) }
+      case 'map': return { kind: 'string', ope: this.xmap.bind(this) }
+      case 'filter': return { kind: 'string', ope: this.filter.bind(this) }
+      case 'throttleTime': return { kind: 'string', ope: this.throttleTime.bind(this) }
+      case 'debounceTime': return { kind: 'string', ope: this.debounceTime.bind(this) }
+      case 'distinctUntilChanged': return { kind: 'string', ope: this.distinctUntilChanged.bind(this) }
+      case 'merge': return { kind: 'data', ope: this.merge.bind(this) }
+      case 'switchMap': return { kind: 'string', ope: this.switchMap.bind(this) }
+      case 'skip': return { kind: 'string', ope: this.skip.bind(this) }
+      case 'take': return { kind: 'string', ope: this.take.bind(this) }
+      case 'finalize': return { kind: 'string', ope: this.finalize.bind(this) }
     }
   }
 
@@ -89,7 +89,7 @@ export class StreamService {
   of(): Observable<string> {
     return this.stream$
   }
-  map(): Observable<string> {
+  xmap(): Observable<string> {
     return this.stream$
       .pipe(
         map(x => `map: ${x}`)

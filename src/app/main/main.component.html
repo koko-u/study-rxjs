@@ -13,56 +13,8 @@
         </div>
       </div>
     </div>
-    <div class="log">
-      <div id="logger">
-        <ul>
-          <li *ngFor="let log of loggerService.logs">{{ log }}</li>
-        </ul>
-      </div>
-      <div class="reset">
-        <button
-          class="btn btn-sm btn-warning"
-          (click)="clearLogs()"
-        >
-          Clear Logs
-        </button>
-      </div>
-    </div>
-    <div class="controls">
-      <div class="form-group">
-        <select
-          name="type"
-          class="form-control"
-          (change)="onSelect($event)"
-        >
-          <option
-            *ngFor="let operator of operators"
-            [value]="operator"
-          >
-            {{ operator }}
-          </option>
-        </select>
-      </div>
-      <div class="form-group">
-        <div class="col-10">
-          <input
-            type="text"
-            name="message"
-            class="form-control"
-            [(ngModel)]="message"
-            (keyup)="onKeyup($event)"
-          >
-        </div>
-        <div class="col-2">
-          <button
-            class="btn btn-outline-primary"
-            (click)="onEnter($event)"
-          >
-            Send Data
-          </button>
-        </div>
-      </div>
-    </div>
+    <app-log [logSubject$]="logSubject$"></app-log>
+    <app-stream-form (changeOperator)="onChangeOperator($event)"></app-stream-form>
   </div>
   <div id="code-block" [ngSwitch]="selectedOperator">
     <app-of-operator *ngSwitchCase="'of'"></app-of-operator>
